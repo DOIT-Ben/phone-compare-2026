@@ -9,7 +9,7 @@
 <script>try{var q=new URLSearchParams(location.search).get("theme"),t=q||JSON.parse(localStorage.getItem("pc26:theme"))||"dark";if(t==="light")document.documentElement.dataset.theme="light"}catch(e){}</script>
 <meta name="description" content="2026 旗舰手机参数对比：性能、屏幕、影像、续航、充电、价格，数据来自本地 CSV。">
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" async onerror="var s=document.createElement('script');s.src='https://unpkg.com/gsap@3.12.5/dist/gsap.min.js';s.async=true;document.head.appendChild(s)"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" async onerror="var s=document.createElement('script');s.src='https://unpkg.com/chart.js@4.4.1/dist/chart.umd.min.js';s.async=true;document.head.appendChild(s)"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" async onload="document.dispatchEvent(new CustomEvent('lib:chart'))" onerror="var s=document.createElement('script');s.src='https://unpkg.com/chart.js@4.4.1/dist/chart.umd.min.js';s.async=true;s.onload=()=>document.dispatchEvent(new CustomEvent('lib:chart'));document.head.appendChild(s)"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js" async onerror="var s=document.createElement('script');s.src='https://unpkg.com/fuse.js@7.0.0/dist/fuse.min.js';s.async=true;document.head.appendChild(s)"></script>
 <style>
 /* ================= 基础 ================= */
@@ -895,7 +895,7 @@ class PhoneSelector extends HTMLElement{
     this.query='';this.input.value='';this._kb=-1;
     this.pop.hidden=false;this.btn.setAttribute('aria-expanded','true');
     this.buildBrands();this.renderList();
-    if(window.gsap&&!RM)gsap.fromTo(this.pop,{autoAlpha:0,y:-8,scale:.97},{autoAlpha:1,y:0,scale:1,duration:.34,ease:'back.out(1.6)'});
+    if(window.gsap&&!RM)gsap.fromTo(this.pop,{autoAlpha:0,y:-6,scale:.98},{autoAlpha:1,y:0,scale:1,duration:.26,ease:'power3.out',overwrite:'auto'});
     setTimeout(()=>this.input.focus(),30);
   }
   close(){
@@ -1010,12 +1010,12 @@ class CompareGrid extends HTMLElement{
       const bars=()=>$$('.cg-bar i',this.grid).forEach(i=>{i.style.transform=`scaleX(${(i.dataset.w||0)/100})`});
       requestAnimationFrame(bars);setTimeout(bars,180);
       if(window.gsap&&!RM){
-        let i=0;
+        let n=0;
         $$('[data-fk]',this.grid).forEach(el=>{
           const old=before.get(el.dataset.fk);
-          if(!old){gsap.from(el,{opacity:0,y:12,duration:.38,delay:.04+i*.016,ease:'power2.out',clearProps:'opacity,transform'});i++;return}
+          if(!old){gsap.from(el,{opacity:0,y:10,duration:.3,delay:.04+Math.min(n*.02,.12),ease:'power2.out',overwrite:'auto',clearProps:'opacity,transform'});n++;return}
           const now=el.getBoundingClientRect(),dx=old.left-now.left,dy=old.top-now.top;
-          if(Math.abs(dx)>1||Math.abs(dy)>1){gsap.fromTo(el,{x:dx,y:dy},{x:0,y:0,duration:.5,ease:'power3.out',clearProps:'transform',delay:i*.012});i++}
+          if(Math.abs(dx)>1||Math.abs(dy)>1)gsap.fromTo(el,{x:dx,y:dy},{x:0,y:0,duration:.36,ease:'power3.out',overwrite:'auto',clearProps:'transform'});
         });
       }
     };
@@ -1315,9 +1315,8 @@ class DetailDrawer extends HTMLElement{
     ];
     const box=$('.dd-stats',this);box.innerHTML='';
     stats.forEach(c=>{const sc=document.createElement('stat-card');box.appendChild(sc);sc.setCfg(c)});
-    $('radar-chart',this).setPhone(p);
-    $('donut-chart',this).setPhone(p);
-    $('bar-chart',this).setPhone(p);
+    const charts=[$('radar-chart',this),$('donut-chart',this),$('bar-chart',this)];
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{if(this.phone===p)charts.forEach(c=>c.setPhone(p))}));
     const sup=superlatives(p,App.phones);
     const li=arr=>arr.length?arr.map(s=>`<li>${esc(s)}</li>`).join(''):'<li>—</li>';
     $('.pc-pro ul',this).innerHTML=li([...sup.pro,...splitList(p.prosText)].slice(0,6));
@@ -1340,18 +1339,18 @@ class DetailDrawer extends HTMLElement{
     document.body.classList.add('locked');
     this._prevFocus=document.activeElement;
     if(window.gsap&&!RM){
-      gsap.fromTo(this.mask,{opacity:0},{opacity:1,duration:.35,ease:'power1.out'});
-      gsap.fromTo(this.panel,{x:'104%'},{x:'0%',duration:.55,ease:'expo.out',clearProps:'transform'});
-      gsap.fromTo($$('.dd-scroll > *',this),{opacity:0,y:24},{opacity:1,y:0,duration:.6,stagger:.055,delay:.14,ease:'power3.out',clearProps:'all'});
+      gsap.fromTo(this.mask,{opacity:0},{opacity:1,duration:.25,ease:'power1.out'});
+      gsap.fromTo(this.panel,{x:'104%'},{x:'0%',duration:.42,ease:'power4.out',overwrite:'auto',clearProps:'transform'});
+      gsap.fromTo($$('.dd-scroll > *',this),{opacity:0,y:14},{opacity:1,y:0,duration:.3,stagger:.025,delay:.06,ease:'power2.out',overwrite:'auto',clearProps:'all'});
     }
     $('.dd-close',this).focus();
   }
   close(){
     const done=()=>{this.hidden=true;document.body.classList.remove('locked');this._prevFocus?.focus?.()};
     if(window.gsap&&!RM){
-      gsap.to(this.mask,{opacity:0,duration:.3,ease:'power1.in'});
-      gsap.to(this.panel,{x:'104%',duration:.42,ease:'expo.in',onComplete:()=>{clearTimeout(this._ct);done()}});
-      clearTimeout(this._ct);this._ct=setTimeout(done,520);
+      gsap.to(this.mask,{opacity:0,duration:.2,ease:'power1.in'});
+      gsap.to(this.panel,{x:'104%',duration:.34,ease:'power3.in',overwrite:'auto',onComplete:()=>{clearTimeout(this._ct);done()}});
+      clearTimeout(this._ct);this._ct=setTimeout(done,420);
     }else done();
   }
   nav(dir){if(this.gallery)this.gallery.go(this.gallery.i+dir)}
@@ -1427,7 +1426,9 @@ const App={
     const qp=new URLSearchParams(location.search).get('theme');
     setTheme(qp==='light'||qp==='dark'?qp:LS.get('theme','dark'));
     $('#btnTheme').addEventListener('click',()=>setTheme(LS.get('theme','dark')==='light'?'dark':'light'));
-    document.addEventListener('themechange',()=>{$$('radar-chart,bar-chart,donut-chart').forEach(el=>el.refresh&&el.refresh())});
+    const chartRefresh=()=>$$('radar-chart,bar-chart,donut-chart').forEach(el=>el.refresh&&el.refresh());
+    document.addEventListener('themechange',chartRefresh);
+    document.addEventListener('lib:chart',chartRefresh);
     this.renderAll();
     const dm=location.hash.match(/#d=([\w-]+)/);
     if(dm&&this.byId.has(dm[1]))this.openDrawer(dm[1]);
