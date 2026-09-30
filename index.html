@@ -439,7 +439,7 @@ html[data-theme="light"] .dd-panel{box-shadow:-30px 0 70px -40px rgba(30,40,60,.
     <div class="cards" id="cards"></div>
   </section>
 </main>
-<footer class="app-footer">数据来自本地 CSV · 参数以官方发布为准 · 机型图为 CSS 示意稿，可在详情中替换为真实图片链接</footer>
+<footer class="app-footer">数据来自本地 CSV · 参数以官方发布为准 · 22/23 款机型内置官方真图，个别视图为 CSS 示意稿，可在详情中替换图片链接</footer>
 <detail-drawer id="drawer"></detail-drawer>
 <div class="toast" id="toast" role="status"></div>
 <noscript>需要启用 JavaScript。</noscript>
@@ -1280,7 +1280,7 @@ class DetailDrawer extends HTMLElement{
           <section class="dd-sec"><h3>数据可视化</h3>
             <div class="dd-viz"><radar-chart></radar-chart><donut-chart></donut-chart></div>
             <bar-chart></bar-chart>
-            <p class="dd-note">维度得分为数据集内归一化估算，非官方评分；价格维度售价越低得分越高。性能以安兔兔为主，iPhone 18 以 GB6 多核折算，华为无同口径跑分按 CSV 表述置底。</p>
+            <p class="dd-note">维度得分为数据集内归一化估算，非官方评分；价格维度售价越低得分越高。性能以安兔兔为主，无安兔兔口径的机型按 GB6 多核折算，华为无同口径跑分按 CSV 表述置底。</p>
           </section>
           <section class="dd-sec"><h3>优势与短板</h3><div class="dd-pc"><div class="pc-col pc-pro"><h4>优势</h4><ul></ul></div><div class="pc-col pc-con"><h4>短板</h4><ul></ul></div></div></section>
           <section class="dd-sec dd-exc-sec" hidden><h3>独家配置</h3><p class="dd-exc"></p></section>
@@ -1485,7 +1485,8 @@ const App={
     const {dmax,avg}=computeDerived(this.phones);
     this.dmax=dmax;this.avg=avg;
     $('#subLine').textContent=`${this.phones.length} 款机型 · 数据来自本地 CSV`;
-    $('#gSub').textContent=`在售 ${this.phones.filter(p=>p.statusShort==='在售').length} 款 · 未发布 ${this.phones.filter(p=>p.statusShort==='未发布').length} 款 · 点击卡片查看详情`;
+    const stCnt=n=>this.phones.filter(p=>p.statusShort===n).length, dcCnt=stCnt('已停产');
+    $('#gSub').textContent=`在售 ${stCnt('在售')} 款 · 未发布 ${stCnt('未发布')} 款${dcCnt?` · 已停产 ${dcCnt} 款`:''} · 点击卡片查看详情`;
   },
   ordered(){
     const arr=this.sel.filter(Boolean).map(id=>this.byId.get(id));
