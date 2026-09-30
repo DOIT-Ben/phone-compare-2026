@@ -33,7 +33,7 @@
   --warn:#e9c46a;--warnbrd:rgba(233,196,106,.3);
   --font:Inter,-apple-system,"SF Pro Text","Segoe UI","PingFang SC","HarmonyOS Sans SC","Microsoft YaHei",system-ui,sans-serif;
 }
-html{background:linear-gradient(180deg,var(--bg0),var(--bg1) 140%);scrollbar-gutter:stable}
+html{background:linear-gradient(180deg,var(--bg0),var(--bg1) 140%);overflow-y:scroll;scrollbar-gutter:stable}
 body{font-family:var(--font);color:var(--txt);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 body.locked{overflow:hidden}
 img{display:block;max-width:100%}
@@ -118,7 +118,7 @@ phone-selector{position:relative;display:block}
 .ps-search input{flex:1;background:none;border:0;outline:none;color:var(--txt);min-width:0}
 .ps-search input::placeholder{color:var(--txt3)}
 .ps-brands{display:flex;gap:6px;flex-wrap:wrap;padding:9px 2px 8px}
-.ps-list{max-height:min(330px,52vh);overflow-y:auto;overscroll-behavior:contain;margin-top:2px}
+.ps-list{max-height:min(330px,52vh);overflow-y:auto;scrollbar-gutter:stable;overscroll-behavior:contain;margin-top:2px}
 .ps-item{width:100%;display:flex;align-items:center;gap:11px;padding:8px 9px;border-radius:11px;text-align:left;transition:background .18s}
 .ps-item:hover,.ps-item.kb{background:var(--hov2)}
 .ps-item.off{opacity:.38}
@@ -912,17 +912,17 @@ class PhoneSelector extends HTMLElement{
     const th=$('.ps-item-th',itemEl)||$('.ps-item-th',this.listBox);
     const ghost=th?th.firstElementChild:null;
     this.close();
-    const target=()=>App.select(this.slot,p.id,this);
+    App.select(this.slot,p.id,this);
     if(ghost&&window.gsap&&!RM){
       const a=ghost.getBoundingClientRect(),b=this.btn.getBoundingClientRect();
       const g=document.createElement('div');g.className='fly-thumb';
       g.innerHTML=thumbHTML(p,'back');
       g.style.cssText=`left:${b.left+b.width/2-13}px;top:${b.top+6}px;width:26px;height:44px;transform:translate(${a.left-(b.left+b.width/2-13)}px,${a.top-(b.top+6)}px) scale(${Math.min(1.2,a.width/26)})`;
       document.body.appendChild(g);
-      let _landed=0;const land=()=>{if(_landed++)return;g.remove();target()};
-      gsap.to(g,{x:0,y:0,scale:1,duration:.5,ease:'power3.inOut',onComplete:land});
-      setTimeout(land,520);
-    }else target();
+      let _d=0;const die=()=>{if(_d++)return;gsap.to(g,{autoAlpha:0,duration:.14,onComplete:()=>g.remove()});setTimeout(()=>g.remove(),240)};
+      gsap.to(g,{x:0,y:0,scale:1,duration:.45,ease:'power3.inOut',onComplete:die});
+      setTimeout(die,540);
+    }
   }
 }
 
