@@ -439,7 +439,7 @@ html[data-theme="light"] .dd-panel{box-shadow:-30px 0 70px -40px rgba(30,40,60,.
     <div class="cards" id="cards"></div>
   </section>
 </main>
-<footer class="app-footer">数据来自本地 CSV · 参数以官方发布为准 · 22/23 款机型内置官方真图，个别视图为 CSS 示意稿，可在详情中替换图片链接</footer>
+<footer class="app-footer">数据来自本地 CSV · 参数以官方发布为准 · 22/23 款机型内置官方真图（全部透明底），个别视图为 CSS 示意稿，可在详情中替换图片链接</footer>
 <detail-drawer id="drawer"></detail-drawer>
 <div class="toast" id="toast" role="status"></div>
 <noscript>需要启用 JavaScript。</noscript>
@@ -531,7 +531,7 @@ const MOCK_BY_BRAND={苹果:'apple',荣耀:'honor',小米:'xiaomi',iQOO:'iqoo',�
 const MKR={apple:15,honor:13,xiaomi:12,iqoo:12,redmi:13,huawei:12,oneplus:14};
 const SITE_BY_BRAND={苹果:'https://www.apple.com.cn/',荣耀:'https://www.hihonor.com/',小米:'https://www.mi.com/',iQOO:'https://www.iqoo.com/',红米:'https://www.mi.com/',华为:'https://consumer.huawei.com/cn/',一加:'https://www.oneplus.com/cn'};
 /* 内置真实产品图（来源：品牌官网，见 img/ 目录） */
-/* 内置真实产品图（80 张官方图压缩至 1500px 内联，见 README 来源表） */
+/* 内置真实产品图（80 张官方图压缩至 1500px 内联、全部透明底，见 README 来源表） */
 const DEFAULT_IMGS={
   m1:{main:'img/m1-main.webp',front:'img/m1-front.webp',back:'img/m1-back.webp',side:'img/m1-side.webp',detail:'img/m1-detail.webp'},
   m2:{back:'img/m2-back.webp',detail:'img/m2-detail.webp',front:'img/m2-front.webp',main:'img/m2-main.webp',side:'img/m2-side.webp'},
@@ -557,7 +557,7 @@ const DEFAULT_IMGS={
   m23:{main:'img/m23-main.webp',front:'img/m23-front.webp',back:'img/m23-back.webp',side:'img/m23-side.webp',detail:'img/m23-detail.webp'},
 };
 /* 每张内置图的原始像素尺寸，用于 img width/height 占位防布局跳动（CLS） */
-const IMG_DIMS={'m1-back':[236,580],'m1-detail':[1440,760],'m1-front':[286,596],'m1-main':[1200,630],'m11-detail':[1600,833],'m12-front':[1600,763],'m13-back':[1600,844],'m13-detail':[1600,844],'m13-front':[1600,844],'m13-main':[271,334],'m14-detail':[1440,1070],'m14-main':[271,334],'m14-side':[1374,397],'m15-back':[544,1456],'m15-front':[446,1236],'m15-main':[464,618],'m16-back':[296,587],'m16-front':[297,606],'m16-main':[1200,1200],'m17-back':[480,636],'m18-back':[480,636],'m2-back':[1600,844],'m2-detail':[1600,844],'m2-front':[716,1440],'m2-main':[1200,630],'m2-side':[1600,763],'m20-back':[480,636],'m20-detail':[1600,1009],'m3-back':[1600,880],'m3-detail':[628,1600],'m3-front':[771,1600],'m3-side':[1600,859],'m4-back':[480,636],'m4-detail':[690,585],'m4-front':[1187,1066],'m5-back':[1104,1600],'m5-front':[408,960],'m6-back':[480,636],'m7-back':[1600,738],'m7-detail':[1600,733],'m7-front':[1600,1587],'m7-main':[1134,1440],'m7-side':[1600,667],'m8-back':[480,636],'m9-back':[480,636],'m21-back':[1399,1308],'m21-detail':[900,738],'m21-front':[900,786],'m21-main':[900,786],'m21-side':[1110,1012],'m22-back':[321,900],'m22-detail':[872,900],'m22-front':[427,900],'m22-main':[725,900],'m22-side':[1400,739],'m23-back':[278,900],'m23-detail':[1200,776],'m23-front':[465,900],'m1-side':[1500,792],'m11-back':[480,636],'m11-front':[577,900],'m11-main':[900,896],'m12-back':[1600,844],'m14-back':[873,1500],'m14-front':[519,1372],'m17-main':[480,636],'m18-main':[1439,1080],'m19-back':[441,900],'m19-main':[690,1121],'m20-main':[900,531],'m20-side':[900,600],'m23-side':[816,1160],'m3-main':[900,900],'m4-main':[1096,954],'m5-detail':[1198,843],'m5-main':[843,1222],'m6-main':[1500,796],'m8-main':[1413,1008],'m9-main':[480,636],'m23-main':[744,900]};
+const IMG_DIMS={'m1-back':[729,995],'m1-detail':[711,1019],'m1-front':[529,1065],'m1-main':[1600,464],'m11-detail':[706,1067],'m12-front':[1600,753],'m13-back':[583,1027],'m13-detail':[645,1052],'m13-front':[549,842],'m13-main':[892,1064],'m14-detail':[1004,841],'m14-main':[250,300],'m14-side':[1600,317],'m15-back':[790,1061],'m15-front':[1441,945],'m15-main':[464,562],'m16-back':[753,982],'m16-front':[509,1031],'m16-main':[590,1074],'m17-back':[887,1080],'m18-back':[943,1080],'m2-back':[584,993],'m2-detail':[677,1080],'m2-front':[1551,1070],'m2-main':[873,1052],'m2-side':[1600,292],'m20-back':[875,1080],'m20-detail':[753,1067],'m3-back':[695,1069],'m3-detail':[1439,1080],'m3-front':[577,1080],'m3-side':[1600,360],'m4-back':[887,1080],'m4-detail':[1600,900],'m4-front':[1187,1066],'m5-back':[869,1080],'m5-front':[1373,975],'m6-back':[919,1078],'m7-back':[546,1048],'m7-detail':[1600,916],'m7-front':[308,1073],'m7-main':[1118,1080],'m7-side':[1264,1077],'m8-back':[908,1080],'m9-back':[865,1078],'m21-back':[1600,1032],'m21-detail':[1530,1018],'m21-front':[897,785],'m21-main':[897,785],'m21-side':[851,625],'m22-back':[491,1080],'m22-detail':[899,1026],'m22-front':[580,1080],'m22-main':[984,1079],'m22-side':[753,1073],'m23-back':[1320,991],'m23-detail':[1058,530],'m23-front':[1509,1022],'m1-side':[752,1051],'m11-back':[896,1075],'m11-front':[999,1060],'m11-main':[891,893],'m12-back':[618,1031],'m14-back':[1600,1043],'m14-front':[490,1080],'m17-main':[849,1080],'m18-main':[1439,1080],'m19-back':[431,890],'m19-main':[1132,1078],'m20-main':[892,527],'m20-side':[1472,1080],'m23-side':[567,1080],'m3-main':[1085,1008],'m4-main':[1435,1055],'m5-detail':[1572,1080],'m5-main':[851,1060],'m6-main':[1500,796],'m8-main':[1413,1008],'m9-main':[892,1077],'m23-main':[921,1077]};
 function mergeImages(base,over){
   const out={};
   new Set([...Object.keys(base||{}),...Object.keys(over||{})]).forEach(id=>{
