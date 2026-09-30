@@ -134,8 +134,11 @@ phone-selector{position:relative;display:block}
 .ps-item-in span{display:block;font-size:11.5px;color:var(--txt3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ps-item-end{flex:none;text-align:right;font-size:12px;color:var(--txt2);font-variant-numeric:tabular-nums}
 .ps-list .empty{padding:22px 0;text-align:center;color:var(--txt3);font-size:12.5px}
-.fly-card{position:fixed;z-index:300;pointer-events:none;border-radius:12px;overflow:hidden;box-shadow:0 18px 44px -10px rgba(0,0,0,.6);will-change:transform,opacity}
-.fly-card img{width:100%;height:100%;object-fit:cover;display:block}
+.fly-card{position:fixed;z-index:300;pointer-events:none;display:flex;align-items:center;gap:12px;padding:11px 13px;overflow:hidden;border:1px solid var(--brd);box-shadow:0 26px 60px -12px rgba(0,0,0,.55);will-change:transform,opacity}
+.fly-card img{height:100%;flex:none;border-radius:10px;object-fit:cover;min-width:0}
+.fly-card .fc-in{min-width:0}
+.fly-card .fc-in b{display:block;font-size:14.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--txt)}
+.fly-card .fc-in span{display:block;font-size:12.5px;opacity:.62;white-space:nowrap;color:var(--txt)}
 
 /* ================= 对比表 ================= */
 .cg-head{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:26px 2px 12px}
@@ -921,19 +924,17 @@ class PhoneSelector extends HTMLElement{
     this.close();
     App.select(this.slot,p.id,this);
     if(ghost&&window.gsap&&!RM){
-      const a=ghost.getBoundingClientRect(),b=this.btn.getBoundingClientRect();
+      const a=itemEl.getBoundingClientRect(),b=this.btn.getBoundingClientRect();
       const src=ghost.currentSrc||ghost.src;
-      const H=Math.round(Math.min(b.height*1.4,120)),W=Math.round(H*0.6);
-      const L=b.left+24-W/2,T=b.top+b.height/2-H/2;
       const g=document.createElement('div');g.className='fly-card';
-      g.innerHTML=`<img src="${src}" alt="">`;
-      g.style.cssText=`left:${L}px;top:${T}px;width:${W}px;height:${H}px`;
+      g.style.cssText=`left:${b.left}px;top:${b.top}px;width:${b.width}px;height:${b.height}px;border-radius:${getComputedStyle(this.btn).borderRadius};background-color:var(--panelbg);background-image:linear-gradient(135deg,${hexA(p.theme,.42)},${hexA(p.theme,.14)})`;
+      g.innerHTML=`${src?`<img src="${src}" alt="">`:''}<div class="fc-in"><b>${esc(p.model)}</b><span>${esc(p.brand)}${p.price!=null?' · ¥'+fmtInt(p.price):''}</span></div>`;
       document.body.appendChild(g);
+      gsap.set(g,{x:a.left-b.left,y:a.top-b.top,scaleX:a.width/b.width,scaleY:a.height/b.height,transformOrigin:'top left'});
       let _d=0;
-      const die=()=>{if(_d++)return;gsap.to(g,{opacity:0,scale:1.06,duration:.2,ease:'power1.out',onComplete:()=>g.remove()});setTimeout(()=>g.remove(),300)};
-      gsap.set(g,{xPercent:-50,yPercent:-50,x:a.left+a.width/2-L,y:a.top+a.height/2-T,scale:a.height/H,opacity:.96});
-      gsap.to(g,{x:0,y:0,scale:1,duration:.44,ease:'power3.inOut',onComplete:die});
-      setTimeout(die,540);
+      const die=()=>{if(_d++)return;gsap.to(g,{opacity:0,duration:.22,ease:'power1.out',onComplete:()=>g.remove()});setTimeout(()=>g.remove(),320)};
+      gsap.to(g,{x:0,y:0,scaleX:1,scaleY:1,duration:.5,ease:'power3.inOut',onComplete:die});
+      setTimeout(die,620);
     }
   }
 }
