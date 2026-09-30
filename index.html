@@ -531,12 +531,12 @@ const MOCK_BY_BRAND={苹果:'apple',荣耀:'honor',小米:'xiaomi',iQOO:'iqoo',�
 const MKR={apple:15,honor:13,xiaomi:12,iqoo:12,redmi:13,huawei:12,oneplus:14};
 const SITE_BY_BRAND={苹果:'https://www.apple.com.cn/',荣耀:'https://www.hihonor.com/',小米:'https://www.mi.com/',iQOO:'https://www.iqoo.com/',红米:'https://www.mi.com/',华为:'https://consumer.huawei.com/cn/',一加:'https://www.oneplus.com/cn'};
 /* 内置真实产品图（来源：品牌官网，见 img/ 目录） */
-/* 内置真实产品图（77 张官方图压缩至 1500px 内联，见 README 来源表） */
+/* 内置真实产品图（80 张官方图压缩至 1500px 内联，见 README 来源表） */
 const DEFAULT_IMGS={
   m1:{main:'img/m1-main.webp',front:'img/m1-front.webp',back:'img/m1-back.webp',side:'img/m1-side.webp',detail:'img/m1-detail.webp'},
-  m2:{back:'img/m2-back.webp',detail:'img/m2-detail.webp',main:'img/m2-main.webp',side:'img/m2-side.webp'},
+  m2:{back:'img/m2-back.webp',detail:'img/m2-detail.webp',front:'img/m2-front.webp',main:'img/m2-main.webp',side:'img/m2-side.webp'},
   m3:{main:'img/m3-main.webp',front:'img/m3-front.webp',back:'img/m3-back.webp',side:'img/m3-side.webp',detail:'img/m3-detail.webp'},
-  m4:{main:'img/m4-main.webp',back:'img/m4-back.webp',detail:'img/m4-detail.webp'},
+  m4:{main:'img/m4-main.webp',back:'img/m4-back.webp',detail:'img/m4-detail.webp',front:'img/m4-front.webp'},
   m5:{main:'img/m5-main.webp',front:'img/m5-front.webp',back:'img/m5-back.webp',detail:'img/m5-detail.webp'},
   m6:{main:'img/m6-main.webp',back:'img/m6-back.webp'},
   m7:{back:'img/m7-back.webp',detail:'img/m7-detail.webp',front:'img/m7-front.webp',main:'img/m7-main.webp',side:'img/m7-side.webp'},
@@ -546,7 +546,7 @@ const DEFAULT_IMGS={
   m12:{main:'img/m12-back.webp',front:'img/m12-front.webp',back:'img/m12-back.webp',side:'img/m2-side.webp',detail:'img/m2-detail.webp'},
   m13:{back:'img/m13-back.webp',detail:'img/m13-detail.webp',front:'img/m13-front.webp',main:'img/m13-main.webp'},
   m14:{main:'img/m14-main.webp',front:'img/m14-front.webp',back:'img/m14-back.webp',side:'img/m14-side.webp',detail:'img/m14-detail.webp'},
-  m15:{front:'img/m15-front.webp',main:'img/m15-main.webp'},
+  m15:{back:'img/m15-back.webp',front:'img/m15-front.webp',main:'img/m15-main.webp'},
   m16:{back:'img/m16-back.webp',front:'img/m16-front.webp',main:'img/m16-main.webp'},
   m17:{main:'img/m17-main.webp',back:'img/m17-back.webp'},
   m18:{main:'img/m18-main.webp',back:'img/m18-back.webp'},
@@ -557,7 +557,7 @@ const DEFAULT_IMGS={
   m23:{main:'img/m23-main.webp',front:'img/m23-front.webp',back:'img/m23-back.webp',side:'img/m23-side.webp',detail:'img/m23-detail.webp'},
 };
 /* 每张内置图的原始像素尺寸，用于 img width/height 占位防布局跳动（CLS） */
-const IMG_DIMS={'m1-back':[236,580],'m1-detail':[1440,760],'m1-front':[286,596],'m1-main':[1200,630],'m11-detail':[1600,833],'m12-front':[1600,763],'m13-back':[1600,844],'m13-detail':[1600,844],'m13-front':[1600,844],'m13-main':[271,334],'m14-detail':[1440,1070],'m14-main':[271,334],'m14-side':[1374,397],'m15-front':[446,1236],'m15-main':[464,618],'m16-back':[296,587],'m16-front':[297,606],'m16-main':[1200,1200],'m17-back':[480,636],'m18-back':[480,636],'m2-back':[1600,844],'m2-detail':[1600,844],'m2-main':[1200,630],'m2-side':[1600,763],'m20-back':[480,636],'m20-detail':[1600,1009],'m3-back':[1600,880],'m3-detail':[628,1600],'m3-front':[771,1600],'m3-side':[1600,859],'m4-back':[480,636],'m4-detail':[690,585],'m5-back':[1104,1600],'m5-front':[408,960],'m6-back':[480,636],'m7-back':[1600,738],'m7-detail':[1600,733],'m7-front':[1600,1587],'m7-main':[1134,1440],'m7-side':[1600,667],'m8-back':[480,636],'m9-back':[480,636],'m21-back':[1399,1308],'m21-detail':[900,738],'m21-front':[900,786],'m21-main':[900,786],'m21-side':[1110,1012],'m22-back':[321,900],'m22-detail':[872,900],'m22-front':[427,900],'m22-main':[725,900],'m22-side':[1400,739],'m23-back':[278,900],'m23-detail':[1200,776],'m23-front':[465,900],'m1-side':[1500,792],'m11-back':[480,636],'m11-front':[577,900],'m11-main':[900,896],'m12-back':[1600,844],'m14-back':[873,1500],'m14-front':[519,1372],'m17-main':[480,636],'m18-main':[1125,1500],'m19-back':[441,900],'m19-main':[690,1121],'m20-main':[900,531],'m20-side':[900,600],'m23-side':[816,1160],'m3-main':[900,900],'m4-main':[900,763],'m5-detail':[1198,843],'m5-main':[843,1222],'m6-main':[900,900],'m8-main':[1500,1000],'m9-main':[480,636],'m23-main':[744,900]};
+const IMG_DIMS={'m1-back':[236,580],'m1-detail':[1440,760],'m1-front':[286,596],'m1-main':[1200,630],'m11-detail':[1600,833],'m12-front':[1600,763],'m13-back':[1600,844],'m13-detail':[1600,844],'m13-front':[1600,844],'m13-main':[271,334],'m14-detail':[1440,1070],'m14-main':[271,334],'m14-side':[1374,397],'m15-back':[544,1456],'m15-front':[446,1236],'m15-main':[464,618],'m16-back':[296,587],'m16-front':[297,606],'m16-main':[1200,1200],'m17-back':[480,636],'m18-back':[480,636],'m2-back':[1600,844],'m2-detail':[1600,844],'m2-front':[716,1440],'m2-main':[1200,630],'m2-side':[1600,763],'m20-back':[480,636],'m20-detail':[1600,1009],'m3-back':[1600,880],'m3-detail':[628,1600],'m3-front':[771,1600],'m3-side':[1600,859],'m4-back':[480,636],'m4-detail':[690,585],'m4-front':[554,1094],'m5-back':[1104,1600],'m5-front':[408,960],'m6-back':[480,636],'m7-back':[1600,738],'m7-detail':[1600,733],'m7-front':[1600,1587],'m7-main':[1134,1440],'m7-side':[1600,667],'m8-back':[480,636],'m9-back':[480,636],'m21-back':[1399,1308],'m21-detail':[900,738],'m21-front':[900,786],'m21-main':[900,786],'m21-side':[1110,1012],'m22-back':[321,900],'m22-detail':[872,900],'m22-front':[427,900],'m22-main':[725,900],'m22-side':[1400,739],'m23-back':[278,900],'m23-detail':[1200,776],'m23-front':[465,900],'m1-side':[1500,792],'m11-back':[480,636],'m11-front':[577,900],'m11-main':[900,896],'m12-back':[1600,844],'m14-back':[873,1500],'m14-front':[519,1372],'m17-main':[480,636],'m18-main':[1125,1500],'m19-back':[441,900],'m19-main':[690,1121],'m20-main':[900,531],'m20-side':[900,600],'m23-side':[816,1160],'m3-main':[900,900],'m4-main':[900,763],'m5-detail':[1198,843],'m5-main':[843,1222],'m6-main':[900,900],'m8-main':[1500,1000],'m9-main':[480,636],'m23-main':[744,900]};
 function mergeImages(base,over){
   const out={};
   new Set([...Object.keys(base||{}),...Object.keys(over||{})]).forEach(id=>{
