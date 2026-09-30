@@ -29,16 +29,16 @@
 | iPhone 16e | 主图/正面/背面 | apple.com.cn CDN（经 Wayback）+ 现行对比页白色配对渲染（左机裁背面） |
 | 荣耀 Magic9 Pro Max | 五视图全 | honer.com 产品页 CDN + 百度百科（官方前后双机主图） |
 | 荣耀 Magic8 Pro | 主图/背面/侧面/细节 | 百度百科（配色阵列主图 + 侧面手持）+ GSMArena |
-| 小米 18 Pro Max | 主图/正面/背面/细节 | 百度百科（官方手持正背双机 + 发布会 KV 右机裁正面）+ GSMArena |
+| 小米 18 Pro Max | 主图/正面/背面/细节 | 百度百科（三色全家福主图 + 发布会 KV 右机裁正面 + 手持副屏细节）+ GSMArena |
 | 小米 17 Pro Max | 主图/正面/背面 | 百度百科（官方风格渲染图裁剪） |
 | iQOO 16 | 主图/正面/背面/细节 | vivo 官网官方 KV（`cn-exstatic-vivofs.iqoo.com`）+ 百度百科背面特写 |
-| iQOO 15 | 主图/背面 | 百度百科（官方手持背面）+ GSMArena |
-| 红米 K100 Pro Max | 主图/背面 | 百度百科（官方背面渲染） |
+| iQOO 15 | 主图/背面 | 百度百科（官方手持图，主图连手 AI 抠图透明底）+ GSMArena |
+| 红米 K100 Pro Max | 主图/背面 | 百度百科（官方渲染，主图经 AI 抠图为透明底） |
 | 红米 K90 Pro Max | 主图/背面 | GSMArena bigpic（主图/背面同源，官方渲染） |
 | 华为 Mate 80 Pro Max | 五视图全 | huawei.com DAM 图库 |
 | 华为 Mate 70 Pro+ | 主图/正面/背面/细节 | 百度百科（官方前后配对裁剪）+ GSMArena + huawei.com |
 | 一加 16 | 主图/背面 | GSMArena bigpic（官方预热渲染） |
-| 一加 15 | 主图/背面 | 百度百科（官方沙丘金海报）+ GSMArena |
+| 一加 15 | 主图/背面 | 百度百科（官方场景图，主图经 AI 抠图为透明底）+ GSMArena |
 | 一加 13 | 主图/背面 | 百度百科（官方三机展示 + 黑色背面） |
 | 华为 Mate 90 | 无官方图（2026-10-01 发布） | 保留 CSS 示意稿 |
 
