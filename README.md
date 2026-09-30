@@ -53,6 +53,7 @@
 - 国产图片：百度百科词条图（浏览器同源 fetch 绕过 403，`bkimg.cdn.bcebos.com/pic/<hash>?x-bce-process=…,w_1600`）、vivo 官网 KV、GSMArena `cdn2.gsmarena.com/vv/bigpic/<slug>.jpg`（160×212 经 3x 放大）
 - 苹果电池（2026-09-30 补录）：果粉查询 guofenchaxun.com `/devices/params/battery/<slug>`（引 HubWeb.cn，工信部口径：额定容量、双电芯拆分、能量 Wh、标称/限制电压、电池型号与电芯厂、官方视频/流媒体续航）。9 款真实容量：18 Pro Max 5391mAh（带SIM）/5567mAh（无SIM）、17 Pro Max 4823/5088mAh、17 Pro 3988/4252mAh、18 Pro 4056/4288mAh、iPhone 17 3692mAh、Air 3149mAh、16e 与 17e 4005mAh、Duo 4883mAh（双电芯 2962+1921，19.073Wh）
 - 苹果内存与 Geekbench 6：NanoReview 机型页（引 Geekbench 数据库均值）——17 Pro Max 12GB·3940/10434、17 Pro 12GB·3992/10688、iPhone 17 8GB·3736/9226、Air 12GB·4044/11101、16e 8GB·3281/8035、18 Pro 12GB·4719/12677、Duo 12GB·4731/13202、17e 8GB·3595/9245、18 Pro Max 12GB（GB6 4737/12677 见 IT之家）
-- 苹果官方规格补充：apple.com.cn 技术规格页（17 与 Air 现行；17 Pro 与 16e 官方页已下架，经 Wayback 2026-07/2026-01 存档取用）——国行型号（iPhone 17 A3521、Air A3518、16e A3410）、典型/HDR/户外峰值亮度、超瓷晶面板代数（17 全系正面超瓷晶 2）、扬声器（iPhone Air 官方为「内置扬声器」单扬，非立体声）、广色域 P3、4K 杜比视界帧率、官方视频续航（17 30h/27h、17 Pro 31h/28h、Air 27h/22h、16e 26h/21h/音频90h）、MagSafe/Qi2 15W、20W/40W 快充口径
+- 苹果官方规格补充：apple.com.cn 技术规格页（17 与 Air 现行；17 Pro 与 16e 官方页已下架，经 Wayback 2026-07/2026-01 存档取用）——典型/HDR/户外峰值亮度、超瓷晶面板代数（17 全系正面超瓷晶 2）、扬声器（iPhone Air 官方为「内置扬声器」单扬，非立体声）、广色域 P3、4K 杜比视界帧率、官方视频续航（17 30h/27h、17 Pro 31h/28h、Air 27h/22h、16e 26h/21h/音频90h）、MagSafe/Qi2 15W、20W/40W 快充口径、NPU（A19/A19 Pro/A18 均 16 核）
+- 苹果国行型号：Apple 支持文档 support.apple.com/zh-cn/108044（按「（中国大陆）」条目）——18 Pro Max A3718、18 Pro A3715、17 Pro Max A3527、17 Pro A3524、iPhone 17 A3521、Air A3518、17e A3635、16e A3410（此前 18 Pro Max 与 17 Pro Max 行的型号有串号，本轮修正）
 - 反向充电：Apple 支持文档口径——iPhone 15 及后续 USB-C 反向有线充电最高 4.5W，无反向无线充电
 - 仍未公开项（苹果不披露）：触控采样率、调光方式、发光材料、护眼认证、独立影像芯片型号、游戏实测、充满时间；集中统一记「Apple未公布」/「未查到」，不用估算值填充
